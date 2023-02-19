@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+
+    <!--========= Required meta tags =========-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title>ChatGPT-Plugin 页面缓存服务</title>
+
+    <!--====== CSS Here ======-->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+</head>
+
+<body>
+    <!-- contact area start -->
+    <section class="breadcrumb-area mb-190">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="contact-info-head mb-70">
+                        <span>Yunzai-Bot - ChatGPT-Plugin</span>
+                        <h2>页面缓存服务</h2>
+                        <p>当前网址用于缓存ChatGPT-Plugin生成的图片页面，如需访问指定页面缓存请输入图片中右上角5位数页面访问代码，请注意区分大小写.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="contact-form contact-form__2">
+                        <form>
+                            <div class="form-group mb-10">
+                                <input type="text" name="page" id="page" placeholder="Page code">
+                            </div>
+                            <div class="form-group">
+                                <button id="btn" type="submit" class="site-btn">访问页面</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact area end -->
+
+    <!-- footer start -->
+    <footer class="site-footer mt-175">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="social-links">
+                        <a href="https://github.com/ikechan8370/chatgpt-plugin"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 my-auto text-right">
+                    <div class="copyright-text">
+                        <p>&copy; Created By Yunzai-Bot and ChatGPT-Plugin </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <!--========= JS Here =========-->
+    <script src="static/js/jquery-2.2.4.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <script>
+        $("#btn").click(function() {
+            $("input").each(function () {
+                // 判断值不为空
+                event.preventDefault();
+                if ($(this).val().length !== 0){
+                    $(location).attr('href', `/${$(this).val()}`);
+                }
+            });
+		})
+    </script>
+</body>
+
+</html>

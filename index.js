@@ -22,6 +22,10 @@ await server.register(fstatic, {
     prefix: '/'
 })
 
+await server.setNotFoundHandler((request, reply) => {
+  reply.redirect('/404.html')
+})
+
 server.post('/cache', async (request, reply) => {
     const body = request.body || {};
 
@@ -46,14 +50,14 @@ server.post('/cache', async (request, reply) => {
         }
         await fs.mkdir(`tempage/${filename}`, (err) => {
             if (err) throw err
-        })
-        await fs.writeFile(`tempage/${filename}/index.html`, buffer, {flag: 'a'}, function(err) {
-            if (err) {
-                filename = ''
-                console.log(`${filename}创建缓存失败`, err)
-            } else {
-                console.log(`${filename}创建缓存成功`)
-            }
+            fs.writeFile(`tempage/${filename}/index.html`, buffer, {flag: 'a'}, function(err) {
+                if (err) {
+                    filename = ''
+                    console.log(`${filename}创建缓存失败`, err)
+                } else {
+                    console.log(`${filename}创建缓存成功`)
+                }
+            })
         })
 
         reply.send({

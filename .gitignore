@@ -202,5 +202,6 @@ dist
 
 # node-chatgpt-api
 tempage/*
-!tempage/Bing
-!tempage/ChatGPT
+!tempage/index.html
+!tempage/404.html
+!tempage/static
