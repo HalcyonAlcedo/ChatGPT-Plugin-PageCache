@@ -33,12 +33,14 @@
 @import url("644b614f82934cd2a7833c108ceb941b.css");
 @import url("a0020bf6401d4e99884e2be5f5402f24.css");
 html {
+  height: 100%;
   scroll-behavior: smooth;
 }
 
 body {
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
+  height: 100%;
   padding: 0;
   margin: 0;
   font-weight: 400;
