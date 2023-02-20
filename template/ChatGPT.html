@@ -51,7 +51,7 @@
                         <h4>ChatGPT</h4>
                     </div>
                     <div class="about-content">
-                        <p class="markdown">{{content}}</p>
+                        <p class="markdown"></p>
                         <span class="height-50"></span>
                     </div>
                 </div>
@@ -79,6 +79,8 @@
     <script src="../static/js/highlight.min.js"></script>
     <script src="../static/js/marked.min.js"></script>
     <script src="../static/js/tex-mml-chtml.js"></script>
+    <script src="../static/js/purify.min.js"></script>
+    <script src="../static/js/base64.min.js"></script>
     <script src="../static/js/main.js"></script>
 
     <script>
@@ -95,16 +97,18 @@
                 return hljs.highlightAuto(code,[lang]).value;
             }
         });
-        let text = $(".markdown").text()
-        let content = marked.parse($(".markdown").text());
+        const text = '{{content}}';
+        const html = marked.parse(Base64.decode(text));
+        const sanitizedtext = DOMPurify.sanitize(Base64.decode(text));
+        const sanitizedHtml = DOMPurify.sanitize(html);
         let mk = true
-        $(".markdown").html(content);
+        $(".markdown").html(sanitizedHtml);
 
         $("#switch").click(function() {
             if (mk) {
-                $(".markdown").html(text);
+                $(".markdown").html(sanitizedtext);
             } else {
-                $(".markdown").html(content);
+                $(".markdown").html(sanitizedHtml);
             }
             mk = !mk
         });
