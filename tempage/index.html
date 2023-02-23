@@ -28,7 +28,7 @@
                     <div class="contact-info-head mb-70">
                         <span>Yunzai-Bot - ChatGPT-Plugin</span>
                         <h2>页面缓存服务</h2>
-                        <p>当前网址用于缓存ChatGPT-Plugin生成的图片页面，如需访问指定页面缓存请输入图片中右上角5位数页面访问代码，请注意区分大小写.</p>
+                        <p>当前网址用于缓存ChatGPT-Plugin生成的图片页面，如需访问指定页面缓存请将图片拖动到此网站中，或输入图片中右上角5位数页面访问代码，请注意区分大小写.</p>
                     </div>
                 </div>
                 <div class="col-xl-4">
@@ -71,52 +71,6 @@
     <script src="static/js/jquery-2.2.4.min.js"></script>
     <script src="static/js/jsQR.js"></script>
     <script src="static/js/main.js"></script>
-    <script>
-        var box = document.body
-        box.ondragover = function(e) {
-            ev = window.event || e
-            ev.preventDefault()
-        }
-        box.ondrop = function(e) {
-            ev = window.event || e
-            ev.preventDefault()
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = new Image();
-                img.onload = function() {
-                    const dataUrl = event.target.result;
-                    const image = new Image();
-                    image.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = image.width;
-                    canvas.height = image.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const code = jsQR(imageData.data, imageData.width, imageData.height);
-                    if (code) {
-                        const lastSlashIndex = code.data.lastIndexOf('/');
-                        $(location).attr('href', `/${code.data.substr(lastSlashIndex + 1)}`);
-                    } else {
-                        console.log('未能识别出二维码');
-                    }
-                    };
-                    image.src = dataUrl;
-                };
-            img.src = event.target.result;
-            };
-            reader.readAsDataURL(ev.dataTransfer.files[0])
-        }
-        $("#btn").click(function() {
-            $("input").each(function () {
-                // 判断值不为空
-                event.preventDefault();
-                if ($(this).val().length !== 0){
-                    $(location).attr('href', `/${$(this).val()}`);
-                }
-            });
-		})
-    </script>
 </body>
 
 </html>

@@ -44,7 +44,7 @@ server.post('/cache', async (request, reply) => {
         })
         let data = Web_Output
         let buffer = Buffer.from(data)
-        let filename = random(5, {letters: true, numbers: true});
+        let filename = body.entry ? body.entry : random(5, {letters: true, numbers: true});
         if (fs.existsSync(`tempage/${filename}`)) {
             await fs.rmdir(imgDirPath, { recursive: true })
         }
