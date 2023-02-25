@@ -40,7 +40,7 @@
                         <h4>{{senderName}}</h4>
                     </div>
                     <div class="about-content">
-                        <h2>{{prompt}}</h2>
+                        <p class="prompt"></p>
                         <span class="height-50"></span>
                     </div>
                 </div>
@@ -124,6 +124,10 @@
         let mk = true
         $(".markdown").html(sanitizedHtml);
 
+        const prompt = '{{prompt}}';
+        const prompt_html = marked.parse(Base64.decode(prompt));
+        $(".prompt").html(prompt_html);
+        
         $("#switch").click(function() {
             if (mk) {
                 $(".markdown").html(sanitizedtext);
