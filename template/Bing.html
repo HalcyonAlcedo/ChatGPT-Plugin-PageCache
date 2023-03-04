@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="body-{{style}}">
     <header class="site-header">
         <div class="container">
             <div class="row">
@@ -29,14 +29,14 @@
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-xl-5 col-lg-5 text-right">
-                    <div class="section-heading">
+                    <div class="section-heading section-heading-{{style}}">
                         <h2>New Bing</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="hero-content">
+                    <div class="hero-content hero-content-{{style}}">
                         <h4>{{senderName}}</h4>
                     </div>
                     <div class="about-content">
@@ -47,7 +47,12 @@
             </div>
             <div class="row">
                 <div class="col-xl-12">
-                    <div id="switch" class="hero-content">
+                    <div id="switch" class="hero-content hero-content-{{style}}">
+                        {% if style === 'Sydney' %}
+                        <h4>Sydney</h4>
+                        {% else %}
+                        <h4>必应</h4>
+                        {% endif %}
                         <h4>必应</h4>
                     </div>
                     <div class="about-content">
@@ -59,7 +64,7 @@
             {% if quote.length > 0 %}
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="hero-content">
+                    <div class="hero-content hero-content-{{style}}">
                         <h4>引用</h4>
                     </div>
                     <div class="about-content">
@@ -74,11 +79,11 @@
         </div>
     </section>
     <!-- footer start -->
-    <footer class="site-footer mt-175">
+    <footer class="site-footer site-footer-{{style}} mt-175">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 my-auto text-right">
-                    <div class="copyright-text">
+                    <div class="copyright-text copyright-text-{{style}}">
                         <p>Response to {{senderName}} Created By Yunzai-Bot and ChatGPT-Plugin</a></p>
                     </div>
                 </div>

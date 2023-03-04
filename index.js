@@ -35,7 +35,8 @@ server.post('/cache', async (request, reply) => {
             content: body.content.content,
             prompt: body.content.prompt,
             quote: body.content.quote,
-            senderName: body.content.senderName
+            senderName: body.content.senderName,
+            style: body.content.style
         }) : 
         ChatGPT({
             content: body.content.content,
