@@ -11,11 +11,11 @@
 
 	var box = document.body
     box.ondragover = function(e) {
-        ev = window.event || e
+        let ev = window.event || e
         ev.preventDefault()
     }
     box.ondrop = function(e) {
-        ev = window.event || e
+        let ev = window.event || e
         ev.preventDefault()
         const reader = new FileReader();
         reader.onload = function(event) {
